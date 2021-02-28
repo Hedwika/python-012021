@@ -34,6 +34,7 @@ def sance(odvetvi, obrat, zeme, konference=False, newsletter=False):
 
     return body
 
+
 obor = input("Zadejte obor, ve kterém podniká potancionální zákazník: ")
 finance = input("Zadejte obrat potancionálního zákazníka v EUR: ")
 misto = input("Zadejte zemi, ve které potancionální zákazník podniká: ")
