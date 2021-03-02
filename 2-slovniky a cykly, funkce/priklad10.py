@@ -32,7 +32,12 @@ def sance(odvetvi, obrat, zeme, konference=False, newsletter=False):
     else:
         body += 0
 
-    return body
+    if body <= 5:
+        return "Šance na získání zakázky je malá."
+    elif body <= 8:
+        return "Šance na získání zakázky je střední."
+    else:
+        return "Šance na získání zakázky je vysoká."
 
 
 obor = input("Zadejte obor, ve kterém podniká potancionální zákazník: ")
