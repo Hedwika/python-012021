@@ -13,6 +13,9 @@ print(more_than_million)
 champions = vaccinations[(vaccinations["date"] == "2021-03-10") & (vaccinations["daily_vaccinations"] > 100_000)]
 print(champions)
 
+loosers = vaccinations[(vaccinations["date"] == "2021-03-10") & (vaccinations["daily_vaccinations"] < 100)]
+print(champions)
+
 ukfi = vaccinations[((vaccinations["date"] == "2021-03-10") | (vaccinations["date"] == "2021-03-11")) & (vaccinations["country"].isin(["United Kingdom", "Finland", "Italy"]))]
 print(ukfi)
 
