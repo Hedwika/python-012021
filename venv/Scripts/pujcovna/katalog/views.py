@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
+from django.views.generic import ListView
+from . import models
 
 class IndexView(View):
     def get(self, request):
@@ -10,11 +12,14 @@ class IndexView(View):
 <p>Naše půjčovna vznikla v roce 2011 a dnes nabízí přibližně 30 aut.</p>
 """)
 
-class SeznamView(View):
-    def get(self, request):
-        return HttpResponse("""<h1>Zde bude seznam aut.</h1>
-<ul>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ul>""")
+class SeznamAut(ListView):
+    model = models.Auto
+    template_name = "katalog/seznam_aut.html"
+
+class PrehledVypujcek(ListView):
+    model = models.Vypujcka
+    template_name = "katalog/prehled_vypujcek.html"
+
+class SeznamZakazniku(ListView):
+    model = models.Zakaznik
+    template_name = "katalog/seznam_zakazniku.html"

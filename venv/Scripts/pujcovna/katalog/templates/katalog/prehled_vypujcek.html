@@ -1,0 +1,18 @@
+{% block content %}
+
+<h2>Přehled výpůjček</h2>
+<p>Zde vidíte přehled výpůjček</p>
+<ul>
+    {% for vypujcka in object_list %}
+    <li><b>{{ vypujcka.auto }}</b><br>
+        Půjčeno od {{ vypujcka.zacatek }}<br>
+        Vráceno {{ vypujcka.konec }}</li>
+        {{ vypujcka.cas }}
+    {% empty %}
+    <li>Není půjčeno žádné auto.</li>
+    {% endfor %}
+</ul>
+
+<p>Přehled všech našich aut najdete <a href="{% url 'auta' %}">na této stránce.</a></p>
+
+{% endblock %}

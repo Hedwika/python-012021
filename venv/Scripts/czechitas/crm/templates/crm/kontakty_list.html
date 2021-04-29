@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Seznam kontaktů</h2>
+<p>Zde vidíte aktuální seznam kontaktů</p>
+<ul>
+    {% for crm in object_list %}
+    <li>Jméno a příjmení: {{ crm.jmeno }} {{ crm.prijmeni }}, e-mail: {{ crm.email }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

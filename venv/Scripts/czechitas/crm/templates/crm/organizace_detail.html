@@ -1,0 +1,15 @@
+<a href="{% url 'organizace' %}">Návrat na seznam organizací</a>
+
+<h2>{{ object.nazev }}</h2>
+
+<h3>Identifikační číslo: </h3>
+{{ object.identifikacni_cislo }}
+
+<h3>Adresa: </h3>
+{{ object.ulice }}
+{{ object.mesto }}
+{{ object.psc }}
+
+<p>
+    {{ object.popis }}
+</p>

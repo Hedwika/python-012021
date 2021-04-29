@@ -1,0 +1,12 @@
+{% block content %}
+
+<h2>Seznam zákazníků</h2>
+<p>Zde vidíte všechny zákazníky naší půjčovny.</p>
+<ul>
+    {% for zakaznik in object_list %}
+    <li>{{ zakaznik.jmeno }} {{ zakaznik.prijmeni }}, datum narození: {{ zakaznik.datum_narozeni }}<br>
+    Věrnostní program: {{ zakaznik.vernostni_program }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

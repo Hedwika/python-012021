@@ -1,0 +1,17 @@
+{% block content %}
+
+<h2>Seznam aut v naší půjčovně</h2>
+<table>
+    {% for auto in object_list %}
+  <tr>
+    <td>{{ auto.registracni_znacka }}</td>
+    <td>{{ auto.znacka_a_typ }}</td>
+    <td>{{ auto.pocet_najetych_km }}</td>
+    <td>Od poslední technické uplynulo {{ auto.technicka }} dní.</td>
+  </tr>
+    {% endfor %}
+</table>
+
+<p>Zajímá vás, zda je vybrané auto zrovna vypůjčeno? Přehled všech výpůjček najdete <a href="{% url 'vypujcky' %}">na této stránce.</a></p>
+
+{% endblock %}

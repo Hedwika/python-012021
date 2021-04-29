@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Seznam organizací</h2>
+<p>Zde vidíte aktuální seznam organizací</p>
+<ul>
+    {% for organizace in object_list %}
+    <li><a href="{% url 'detail_organizace' organizace.pk %}">Název organizace: {{ organizace.nazev }}</a>, ID: {{ organizace.identifikacni_cislo }}, adresa? {{ organizace.ulice }}, {{ organizace.mesto }}, {{ organizace.psc }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
