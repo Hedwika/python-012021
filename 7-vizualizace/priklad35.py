@@ -10,14 +10,16 @@ wget.download("https://raw.githubusercontent.com/pesikj/python-012021/master/zad
 # Vytvoř tabulku, která bude obsahovat údaje o teplotě za města Helsinki, Miami Beach a Tokyo.
 temperature = pandas.read_csv('temperature.csv')
 temperature["AvgTemperatureCelsius"] = pytemperature.f2c(temperature["AvgTemperature"])
-november_13 = temperature[temperature["Day"] == 13]
-helsinki_miami_tokyo = november_13[(november_13["City"] == "Helsinki") | (november_13["City"] == "Miami Beach") | (november_13["City"] == "Tokyo")]
+helsinki = temperature[(temperature["City"] == "Helsinki") | (temperature["City"] == "Miami Beach") | (temperature["City"] == "Tokyo")]
 
 # Vytvoř krabicový graf a porovnej rozsah teplot v těchto městech.
-helsinki_miami_tokyo_graph = helsinki_miami_tokyo.drop(['AvgTemperature', 'Region', 'Unnamed: 0', 'Day', 'Country', 'City'], axis = 1)
-helsinki_miami_tokyo_graph = helsinki_miami_tokyo_graph.reset_index(drop=True)
+helsinki = temperature[temperature["City"] == "Helsinki"].drop(['AvgTemperature', 'Region', 'Unnamed: 0', 'Day', 'Country', 'City'], axis = 1).reset_index(drop=True)
+helsinki.rename(columns={'AvgTemperatureCelsius': 'Helsinki'}, inplace=True)
+miami = temperature[temperature["City"] == "Miami Beach"].drop(['AvgTemperature', 'Region', 'Unnamed: 0', 'Day', 'Country', 'City'], axis = 1).reset_index(drop=True)
+miami.rename(columns={'AvgTemperatureCelsius': 'Miami'}, inplace=True)
+tokyo = temperature[temperature["City"] == "Tokyo"].drop(['AvgTemperature', 'Region', 'Unnamed: 0', 'Day', 'Country', 'City'], axis = 1).reset_index(drop=True)
+tokyo.rename(columns={'AvgTemperatureCelsius': 'Tokyo'}, inplace=True)
 
-graph = helsinki_miami_tokyo_graph.T
-graph.columns = ['Tokyo', 'Helsinki', 'Miami Beach']
-graph.plot(kind='box', whis=[0, 100])
+helsinki_miami_tokyo_november = pandas.concat([helsinki, miami, tokyo], axis=1)
+helsinki_miami_tokyo_november.plot(kind='box', whis=[0, 100])
 plt.show()
